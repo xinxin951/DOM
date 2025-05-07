@@ -519,6 +519,30 @@
             sessionStorage.clear();
             showResult('已清除所有sessionStorage数据', 'primary');
         }
+        function saveToCookie() {
+            const expiryDate = new Date();
+            console.log(expiryDate, '2222222222222222222222');
+            expiryDate.setDate(expiryDate.getDate() + 7);
+            console.log(expiryDate.setDate(expiryDate.getDate() + 7), '333333333333333333333333333333');
+            document.cookie = `${keyInput.value}=${valueInput.value}; expires=${expiryDate.toUTCString()}; path=/`;
+            console.log(document.cookie, '1111111111111111111111111111111111');
+            showResult(`数据已保存到cookie: ${keyInput.value}=${valueInput.value}`, 'danger');
+        }
+
+        function checkCookie() {
+            console.log(document.cookie.replace(/; /g, '<br>'), '5555555555555555555');
+            showResult(`当前的所有cookie<br>${document.cookie.replace(/; /g, '<br>')}`, 'danger');
+        }
+
+        function clearCookie() {
+            document.cookie.split(';').forEach((cookie) => {
+                console.log(cookie, '++++++++++++++++++++++');
+                const keyName = cookie.split("=")[0].trim();
+                console.log(keyName, '----------------------');
+                document.cookie = `${keyName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+            });
+            showResult('已清空所有cookie', 'danger');
+        }
     </script>
 </body>
 </html> 
