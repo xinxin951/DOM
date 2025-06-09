@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <link rel="stylesheet" href="./css/md.css"> -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Microsoft YaHei', sans-serif;
+      line-height: 1.6;
+      padding: 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+
+    h1 {
+      color: white;
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      animation: fadeInDown 1s ease-out;
+    }
+
+    .info-section {
+      background-color: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 30px;
+      margin: 40px auto;
+      max-width: 480px;
+      color: white;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .info-section h2 {
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+
+    .info-section p {
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+
+    .responsive-indicator {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-size: 12px;
+      z-index: 1000;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+    }
+
+    .card {
+      width: calc(20% - 20px);
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      padding: 10px 30px;
+      text-align: center;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 1s ease-out forwards;
+      /* opacity: 0; */
+      transform: translateY(30px);
+    }
+
+    .card:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    .card:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .card:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    .card:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+
+    .card:nth-child(5) {
+      animation-delay: 0.5s;
+    }
+
+    .card:nth-child(6) {
+      animation-delay: 0.6s;
+    }
+
+    .card:nth-child(7) {
+      animation-delay: 0.7s;
+    }
+
+    .card:nth-child(8) {
+      animation-delay: 0.8s;
+    }
+
+    .card:nth-child(9) {
+      animation-delay: 0.9s;
+    }
+
+    .card:nth-child(10) {
+      animation-delay: 1s;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: left 0.5s;
+    }
+
+    .card:hover::before {
+      left: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.2);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-icon {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 20px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      color: white;
+      transform: transform 0.3s ease;
+    }
+
+    .card-icon img {
+      width: 100%;
+      height: auto;
+    }
+
+    .card:hover .card-icon {
+      transform: rotate(360deg) scale(1.1);
+    }
+
+    .card h2 {
+      color: #667eea;
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .card-icon p {
+      font-size: 14px;
+      color: #667eea;
+      line-height: 1.6;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 1560px) {
+      .card {
+        width: calc(25% - 20px);
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+    }
+
+    @media (max-width: 1280px) {
+      .card {
+        width: calc(33.33% - 20px);
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="responsive-indicator">
+    屏幕宽度: <span id="width"></span>px
+  </div>
+
+  <h1>css媒体查询 - 响应式卡片布局</h1>
+
+  <div class="info-section">
+    <p>这个页面展示了CSS媒体查询的强大功能。调整浏览器窗口大小，观察卡片布局的变化：</p>
+    <p>• 正常屏幕（>1560px）：每行显示 5 个卡片</p>
+    <p>• 中等屏幕（≤1560px）：每行显示 4 个卡片</p>
+    <p>• 小屏幕（≤1280px）：每行显示 3 个卡片</p>
+    <p>• 移动设备（≤768px）：每行显示 2 个卡片</p>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <div class="card-icon"><img src="./img/0e945762515fd7b89f1af9543f5f4e8d_720.png" alt=""></div>
+      <h2>响应式设计</h2>
+      <p>媒体查询让网页能够根据不同设备的屏幕尺寸自动调整布局，提供最佳的用户体验。</p>
+    </div>
+    <div class="card">
+      <div class="card-icon"><img src="./img/0e945762515fd7b89f1af9543f5f4e8d_720.png" alt=""></div>
+      <h2>响应式设计</h2>
+      <p>媒体查询让网页能够根据不同设备的屏幕尺寸自动调整布局，提供最佳的用户体验。</p>
+    </div>
+    <div class="card">
+      <div class="card-icon"><img src="./img/0e945762515fd7b89f1af9543f5f4e8d_720.png" alt=""></div>
+      <h2>响应式设计</h2>
+      <p>媒体查询让网页能够根据不同设备的屏幕尺寸自动调整布局，提供最佳的用户体验。</p>
+    </div>
+    <div class="card">
+      <div class="card-icon"><img src="./img/0e945762515fd7b89f1af9543f5f4e8d_720.png" alt=""></div>
+      <h2>响应式设计</h2>
+      <p>媒体查询让网页能够根据不同设备的屏幕尺寸自动调整布局，提供最佳的用户体验。</p>
+    </div>
+    <div class="card">
+      <div class="card-icon"><img src="./img/0e945762515fd7b89f1af9543f5f4e8d_720.png" alt=""></div>
+      <h2>响应式设计</h2>
+      <p>媒体查询让网页能够根据不同设备的屏幕尺寸自动调整布局，提供最佳的用户体验。</p>
+    </div>
+    <div class="card">
+      <div class="card-icon"><img src="./img/0e945762515fd7b89f1af9543f5f4e8d_720.png" alt=""></div>
+      <h2>响应式设计</h2>
+      <p>媒体查询让网页能够根据不同设备的屏幕尺寸自动调整布局，提供最佳的用户体验。</p>
+    </div>
+    <div class="card">
+      <div class="card-icon"><img src="./img/0e945762515fd7b89f1af9543f5f4e8d_720.png" alt=""></div>
+      <h2>响应式设计</h2>
+      <p>媒体查询让网页能够根据不同设备的屏幕尺寸自动调整布局，提供最佳的用户体验。</p>
+    </div>
+    <div class="card">
+      <div class="card-icon"><img src="./img/0e945762515fd7b89f1af9543f5f4e8d_720.png" alt=""></div>
+      <h2>响应式设计</h2>
+      <p>媒体查询让网页能够根据不同设备的屏幕尺寸自动调整布局，提供最佳的用户体验。</p>
+    </div>
+    <div class="card">
+      <div class="card-icon"><img src="./img/0e945762515fd7b89f1af9543f5f4e8d_720.png" alt=""></div>
+      <h2>响应式设计</h2>
+      <p>媒体查询让网页能够根据不同设备的屏幕尺寸自动调整布局，提供最佳的用户体验。</p>
+    </div>
+    <div class="card">
+      <div class="card-icon"><img src="./img/0e945762515fd7b89f1af9543f5f4e8d_720.png" alt=""></div>
+      <h2>响应式设计</h2>
+      <p>媒体查询让网页能够根据不同设备的屏幕尺寸自动调整布局，提供最佳的用户体验。</p>
+    </div>
+  </div>
+
+  <script>
+    function updateWidth() {
+      document.getElementById('width').textContent = window.innerWidth;
+    }
+    updateWidth();
+    window.addEventListener('resize', updateWidth);
+  </script>
+
+</body>
+
+</html>
